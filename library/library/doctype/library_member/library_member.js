@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Library Member", {
-	refresh: function (frm) {
+	refresh(frm) {
 		frm.add_custom_button("Create Membership", () => {
 			frappe.new_doc("Library Membership", {
 				library_member: frm.doc.name,
@@ -14,4 +14,12 @@ frappe.ui.form.on("Library Member", {
 			});
 		});
 	},
+    member_type(frm) {
+        frm.set_value("library_member", null);
+    },
+    library_member(frm) {
+        frm.set_value("first_name", null);
+        frm.set_value("last_name", null);
+        frm.set_value("full_name", null);
+    }
 });
