@@ -1,0 +1,12 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+{% if image %}
+<img src={{image}} style="width:100px"/>
+{% endif %}
+<h1>{{ title }}</h1>
+{{author}}
+
+{% endblock %}
+
+<!-- this is a sample default web page template -->
