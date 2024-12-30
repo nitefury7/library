@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.model.docstatus import Docstatus
+from frappe.model.docstatus import DocStatus
 
 class LibraryTransaction(Document):
     def before_submit(self):
@@ -53,7 +53,7 @@ class LibraryTransaction(Document):
     def validate_maximum_limit(self):
         # check if the member has reached the maximum limit of books they can issue
         max_books = frappe.db.get_single_value("Library Settings", "max_books")
-        issued_books = frappe.db.count("Library Transaction", {"library_member": self.library_member, "type": "Issue", "docstatus": Docstatus.submitted()})
+        issued_books = frappe.db.count("Library Transaction", {"library_member": self.library_member, "type": "Issue", "docstatus": DocStatus.submitted()})
 
         if issued_books >= max_books:
            frappe.throw(_("The member has reached the maximum limit of books they can issue"))
