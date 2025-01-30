@@ -2,7 +2,6 @@
  "actions": [],
  "allow_guest_to_view": 1,
  "allow_rename": 1,
- "autoname": "field:book_name",
  "creation": "2024-12-21 17:47:26.917114",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -78,7 +77,6 @@
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Book",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -116,6 +114,7 @@
   }
  ],
  "route": "books",
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],

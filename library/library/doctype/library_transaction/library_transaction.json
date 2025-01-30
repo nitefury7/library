@@ -50,6 +50,7 @@
    "options": "Issue\nReturn"
   },
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
@@ -58,7 +59,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-21 20:16:50.283616",
+ "modified": "2025-01-29 17:55:49.335031",
  "modified_by": "Administrator",
  "module": "Library",
  "name": "Library Transaction",

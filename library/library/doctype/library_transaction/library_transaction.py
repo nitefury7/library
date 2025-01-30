@@ -5,6 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.docstatus import DocStatus
+from frappe.utils import get_link_to_form
 
 class LibraryTransaction(Document):
     def before_submit(self):
@@ -48,8 +49,14 @@ class LibraryTransaction(Document):
             },
         )
         if not valid_membership:
-            frappe.throw(_("The member does not have a valid membership"))
-    
+            member_name = frappe.db.get_value(
+                "Library Member", self.library_member, "full_name"
+            )
+            frappe.throw(
+                _(f"""The member {frappe.bold(member_name)}({get_link_to_form("Library Member", self.library_member)}) does not have a valid membership"""), 
+                primary_action={"label": _("Create Membership"), "client_action": "frappe.set_route", "args": ["Form", "Library Membership", {"library_member": self.library_member}]},
+            )
+
     def validate_maximum_limit(self):
         # check if the member has reached the maximum limit of books they can issue
         max_books = frappe.db.get_single_value("Library Settings", "max_books")
